@@ -1,6 +1,7 @@
 import Sidebar from "./Sidebar.jsx";
 import styled from "styled-components";
 import * as animate from "./animations.js";
+import { device } from "./device.js";
 
 export default Sidebar;
 
@@ -20,22 +21,41 @@ export const ToggleSidebarButton = styled.div`
   border-radius: 50%;
   background: var(--color-button-background-${(props) => props.$color}-${(props) => props.$isOpened ? 'active': 'default'});
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
-  top: 0;
+  top: 2.25rem;
   left: ${(props) => props.$isOpened ? 'calc(100dvw - 89.35dvw)' : 'calc(100dvw - 95dvw)'};
   transition: background 300ms, left 200ms ease-in-out;
-
   &:hover {
     svg {
       color: var(--color-text-${(props) => props.$color}-hover);
     }
   }
-
   svg {
     color: var(--color-text-${(props) => props.$color}-default);
     transition: color 200ms ease-in-out;
+  }
+  @media ${device.mobileS}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 18.35dvw)' : 'calc(100dvw - 60.85dvw)'};
+  }
+  @media ${device.mobileM}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 16.35dvw)' : 'calc(100dvw - 65.85dvw)'};
+  }
+  @media ${device.mobileL}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 15.35dvw)' : 'calc(100dvw - 67.85dvw)'};
+  }
+  @media ${device.tablet}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 68.35dvw)' : 'calc(100dvw - 82.85dvw)'};
+  }
+  @media ${device.laptop}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 75.85dvw)' : 'calc(100dvw - 87.85dvw)'};
+  }
+  @media ${device.laptopL}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 83.25dvw)' : 'calc(100dvw - 90.85dvw)'};
+  }
+  @media ${device.desktop}{
+    left: ${(props) => props.$isOpened ? 'calc(100dvw - 90.15dvw)' : 'calc(100dvw - 95dvw)'};
   }
 `;
 
@@ -129,12 +149,34 @@ export const HeaderSection = styled.div`
 export const SidebarContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
-  width: ${(props) => props.$isOpened ? `calc(100dvw - 90dvw)` : `calc(100dvw - 97.5dvw)`};
+  width: ${(props) => props.$isOpened ? `calc(100dvw - 90dvw)` : `calc(100dvw - 85.5dvw)`};
   height: 92.5dvh;
   padding: 1.75rem;
   border-radius: 1.25rem;
   background: var(--color-sidebar-background-${(props) => props.$color}-default);
   transition: background 300ms, width 200ms ease-in-out;
+
+  @media ${device.mobileS} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 22.5dvw)` : `calc(100dvw - 85.5dvw)`};
+  }
+  @media ${device.mobileM} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 19.5dvw)` : `calc(100dvw - 87.5dvw)`};
+  }
+  @media ${device.mobileL} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 17.5dvw)` : `calc(100dvw - 87.5dvw)`};
+  }
+  @media ${device.tablet} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 74.5dvw)` : `calc(100dvw - 93.5dvw)`};
+  }
+  @media ${device.laptop} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 80.5dvw)` : `calc(100dvw - 95.5dvw)`};
+  }
+  @media ${device.laptopL} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 86.5dvw)` : `calc(100dvw - 96.5dvw)`};
+  }
+  @media ${device.desktop} {
+    width: ${(props) => props.$isOpened ? `calc(100dvw - 92dvw)` : `calc(100dvw - 98dvw)`};
+  }
 `;
 
 export const NavContainer = styled.nav`
